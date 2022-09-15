@@ -2,8 +2,8 @@ package BankAccount;
 
 public class CurrentAccount extends BankAccount {
 
-	double minimumBalance = 20000.0;
-	double interestRate = 0.0;
+	static final double minimumBalance = 20000.0;
+	static final double interestRate = 0.0;
 
 	@Override
 	public String getType() {

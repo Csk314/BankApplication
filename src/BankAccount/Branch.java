@@ -10,7 +10,7 @@ public class Branch {
 	private List<Customer> customers;
 	private String branchId;
 
-	public void CreateBankAccount(String panNumber, String type, double amount) {
+	public void createBankAccount(String panNumber, String type, double amount) {
 		BankAccount bankAccount = null;
 		if (type == "Saving") {
 			bankAccount = new SavingAccount();
@@ -41,6 +41,11 @@ public class Branch {
 			bankAccounts.add(bankAccount);
 		}
 
+	}
+
+	@Override
+	public String toString() {
+		return "Branch [bankAccounts=" + bankAccounts + ", customers=" + customers + ", branchId=" + branchId + "]";
 	}
 
 	public Customer getCustomerByPan(String panNumber) {

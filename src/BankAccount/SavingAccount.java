@@ -2,8 +2,8 @@ package BankAccount;
 
 public class SavingAccount extends BankAccount {
 
-	double minimumBalance = 10000.0;
-	double interestRate = 4.5;
+	public static final double minimumBalance = 10000.0;
+	public static final double interestRate = 4.5;
 
 	@Override
 	public String getType() {

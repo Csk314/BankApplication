@@ -26,4 +26,9 @@ public class Customer {
 
 		this.panNumber = panNumber;
 	}
+
+	@Override
+	public String toString() {
+		return "Customer [accounts=" + accounts + ", panNumber=" + panNumber + "]";
+	}
 }
