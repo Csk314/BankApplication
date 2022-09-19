@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class BankApplicationDemo {
 
-	static void showmenu(BankAccount bankAccount) throws DepositException, MinBalanceException {
+	static void showmenu(BankAccount bankAccount) {
 		System.out.println("Welcome Account Number: " + bankAccount.getaccountNumber() + " \nAccount Type "
 				+ bankAccount.getType());
 		boolean flag = true;
@@ -71,30 +71,48 @@ public class BankApplicationDemo {
 
 				System.out.println("------------------------Try Again-----------------------------");
 			}
+
 		}
 	}
 
-	public static void main(String args[]) throws AccountNotFoundException, DepositException, MinBalanceException {
+	public static void main(String args[]) {
 
 		HeadOffice headOffice = new HeadOffice();
+		// Creating Branches using headoffice
 		headOffice.createBranch("B0");
 
 		headOffice.createBranch("B1");
-//        branch1.
 
+		// Creating Customer
 		Customer c1 = new Customer();
 		c1.setPanNumber("LKJH651V");
 
 		Branch b1 = headOffice.getBranchById("1");
-		// BankAccount bankAccount = new SavingAccount();
 
-		b1.createBankAccount("LKJH651V", "Saving", 10000.0);
-		// Getting BankAccount from bank accno
-		BankAccount savingsAcno = b1.getAccountByAccountNumber("1");
-		// showmenu(savingsAcno); //to test for savings account
-		b1.createBankAccount("ABCDEFG", "Current", 10000.0);
+		b1.createBankAccount("LKJH651V", "Saving", 10000.0); // created a Savings Account in Branch 1
 
-		BankAccount currAcno = b1.getAccountByAccountNumber("2");
-		showmenu(currAcno); // to test for cur account
+		try {
+			BankAccount savingsAcno = b1.getAccountByAccountNumber("1");
+			// Getting BankAccount using bank accno:1
+
+			// showmenu(savingsAcno); //to test for savings account uncomment this
+		} catch (AccountNotFoundException e) {
+
+			e.printStackTrace();
+		}
+
+		b1.createBankAccount("ABCDEFG", "Current", 10000.0); // created a Current Account in Branch 1
+
+		try {
+
+			BankAccount currAcno = b1.getAccountByAccountNumber("2");// Getting BankAccount using bank accno:2
+			showmenu(currAcno);// to test the bank menu for current account
+		}
+
+		catch (AccountNotFoundException e) {
+
+			e.printStackTrace();
+		}
+
 	}
 }
